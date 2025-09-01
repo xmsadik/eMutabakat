@@ -64,6 +64,17 @@
   ]
  },
  {
+  "table":"DDTYPES",
+  "data":
+  [
+   {
+    "TYPENAME":"ZRECO_IMAGE_URL",
+    "STATE":"N",
+    "TYPEKIND":"DTEL"
+   }
+  ]
+ },
+ {
   "table":"TADIR",
   "data":
   [
