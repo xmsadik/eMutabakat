@@ -3,7 +3,7 @@ CLASS lhc_follow_report DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS get_instance_authorizations FOR INSTANCE AUTHORIZATION
       IMPORTING keys REQUEST requested_authorizations FOR follow_report RESULT result.
-
+"
 *    METHODS create FOR MODIFY
 *      IMPORTING entities FOR CREATE follow_report.
 
