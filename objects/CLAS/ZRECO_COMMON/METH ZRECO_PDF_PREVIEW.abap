@@ -600,8 +600,8 @@
         APPEND: gs_cform_sf TO gt_cform_sf.
 
 
-MOVE-CORRESPONDING gs_cform_sf TO gs_temp.
-APPEND gs_temp TO lt_cform.
+        MOVE-CORRESPONDING gs_cform_sf TO gs_temp.
+        APPEND gs_temp TO lt_cform.
 
       ENDLOOP.
 

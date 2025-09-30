@@ -151,7 +151,7 @@ CLASS zreco_common DEFINITION
                                    VALUE(i_pafkt)      TYPE zreco_PAFKT OPTIONAL
                                    VALUE(i_remark)     TYPE zreco_AD_REMARK2 OPTIONAL
                                    VALUE(i_all)        TYPE abap_boolean OPTIONAL
-                                   VALUE(i_stcd1)      TYPE string OPTIONAL
+                                   VALUE(i_stcd1)      TYPE zreco_vkn OPTIONAL
                                    VALUE(i_no_general) TYPE abap_boolean OPTIONAL
                                    VALUE(i_mtype)      TYPE zRECO_TYPE OPTIONAL
                          EXPORTING VALUE(e_mail)       TYPE zreco_ad_smtpadr
