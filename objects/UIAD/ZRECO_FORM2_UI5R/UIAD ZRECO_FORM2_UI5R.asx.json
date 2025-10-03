@@ -33,7 +33,7 @@
     "REFRESH_INTERVALL":0,
     "DISPLAY_NUMBER_UNIT":"",
     "FLAVOR_ID":"",
-    "CHANGED_AT":"+020250131090726",
+    "CHANGED_AT":"+020251003134543",
     "CHANGED_BY":"SAP_CUSTOMER",
     "MASTERLANG":"",
     "ACH_COMPONENT":"",
@@ -100,7 +100,7 @@
     "TILE_KEYWORDS":"",
     "TILE_INFORMATION":"",
     "ALT_SMART_LINK_TITLE":"Mutabakat Formu",
-    "DESCRIPTION":"Mutabakat Formu"
+    "DESCRIPTION":"An SAP Fiori application."
    }
   ]
  },
@@ -128,8 +128,8 @@
     "CRELEASE":"",
     "DELFLAG":"",
     "TRANSLTTXT":"",
-    "CREATED_ON":"2025-01-31",
-    "CHECK_DATE":"2025-01-31",
+    "CREATED_ON":"2025-10-03",
+    "CHECK_DATE":"2025-10-03",
     "CHECK_CFG":""
    }
   ]

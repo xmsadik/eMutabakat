@@ -7,9 +7,11 @@ lock master
 authorization master ( instance )
 //etag master <field_name>
 {
-  create;
-  update;
-  delete;
+//  create;
+//  update;
+//  delete;
   field ( readonly : update ) bukrs , akont;
+
+  static action send result [1] $self;
 
 }

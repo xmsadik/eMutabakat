@@ -4,20 +4,23 @@ CLASS lhc_zreco_ddl_i_reco_form DEFINITION INHERITING FROM cl_abap_behavior_hand
     METHODS get_instance_authorizations FOR INSTANCE AUTHORIZATION
       IMPORTING keys REQUEST requested_authorizations FOR zreco_ddl_i_reco_form RESULT result.
 
-    METHODS create FOR MODIFY
-      IMPORTING entities FOR CREATE zreco_ddl_i_reco_form.
+*    METHODS create FOR MODIFY
+*      IMPORTING entities FOR CREATE zreco_ddl_i_reco_form.
 
-    METHODS update FOR MODIFY
-      IMPORTING entities FOR UPDATE zreco_ddl_i_reco_form.
+*    METHODS update FOR MODIFY
+*      IMPORTING entities FOR UPDATE zreco_ddl_i_reco_form.
 
-    METHODS delete FOR MODIFY
-      IMPORTING keys FOR DELETE zreco_ddl_i_reco_form.
+*    METHODS delete FOR MODIFY
+*      IMPORTING keys FOR DELETE zreco_ddl_i_reco_form.
 
     METHODS read FOR READ
       IMPORTING keys FOR READ zreco_ddl_i_reco_form RESULT result.
 
     METHODS lock FOR LOCK
       IMPORTING keys FOR LOCK zreco_ddl_i_reco_form.
+
+    METHODS send FOR MODIFY
+      IMPORTING keys FOR ACTION zreco_ddl_i_reco_form~send RESULT result.
 
 ENDCLASS.
 
@@ -26,19 +29,35 @@ CLASS lhc_zreco_ddl_i_reco_form IMPLEMENTATION.
   METHOD get_instance_authorizations.
   ENDMETHOD.
 
-  METHOD create.
-  ENDMETHOD.
-
-  METHOD update.
-  ENDMETHOD.
-
-  METHOD delete.
-  ENDMETHOD.
+*  METHOD create.
+*  ENDMETHOD.
+*
+*  METHOD update.
+*  ENDMETHOD.
+*
+*  METHOD delete.
+*  ENDMETHOD.
 
   METHOD read.
   ENDMETHOD.
 
   METHOD lock.
+  ENDMETHOD.
+
+  METHOD send.
+
+
+
+
+
+
+
+
+
+
+
+
+
   ENDMETHOD.
 
 ENDCLASS.
