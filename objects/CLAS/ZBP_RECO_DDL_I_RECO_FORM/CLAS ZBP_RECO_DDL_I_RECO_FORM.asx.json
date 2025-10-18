@@ -17,7 +17,7 @@
    {
     "CLSNAME":"ZBP_RECO_DDL_I_RECO_FORM",
     "CLSTYPE":0,
-    "UUID":"y5LRcTaAHu+ukP53TWzi2g==",
+    "UUID":"+hY+u89+H+CqstoGf8pGWg==",
     "REMOTE":""
    }
   ]
@@ -34,7 +34,7 @@
     "STATE":1,
     "RELEASE":0,
     "AUTHOR":"",
-    "CREATEDON":"2024-12-12",
+    "CREATEDON":"2025-10-15",
     "CHANGEDBY":"",
     "CHANGEDON":"0000-00-00",
     "CHGDANYBY":"",
@@ -51,7 +51,7 @@
     "UNICODE":"5",
     "RSTAT":"",
     "CLSBCIMPL":"",
-    "R3RELEASE":"912",
+    "R3RELEASE":"916",
     "CLSBCTRANS":"",
     "CLSBCCAT":0,
     "CLSBCNODEL":"",
@@ -101,8 +101,8 @@
     "CRELEASE":"",
     "DELFLAG":"",
     "TRANSLTTXT":"",
-    "CREATED_ON":"2024-12-12",
-    "CHECK_DATE":"2024-12-12",
+    "CREATED_ON":"2025-10-15",
+    "CHECK_DATE":"2025-10-15",
     "CHECK_CFG":""
    }
   ]

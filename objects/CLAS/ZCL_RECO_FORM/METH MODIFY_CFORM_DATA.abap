@@ -1879,7 +1879,7 @@
       IF sy-subrc NE 0.
 
         DATA lo_zreco_common1  TYPE REF TO zreco_common.
-              CREATE OBJECT lo_zreco_common1.
+        CREATE OBJECT lo_zreco_common1.
 
         lo_zreco_common1->zreco_to_mail_adrs(
           EXPORTING

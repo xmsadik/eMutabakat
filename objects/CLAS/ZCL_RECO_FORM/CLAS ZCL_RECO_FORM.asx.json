@@ -4538,7 +4538,7 @@
     "EVTDECLTYP":0,
     "TYPDUMMY":"",
     "TYPTYPE":1,
-    "TYPE":"TY_RECEIVERS",
+    "TYPE":"ZRECO_SOMLRECI1",
     "TABLEOF":"",
     "SRCROW1":0,
     "SRCCOLUMN1":0,
@@ -7670,7 +7670,7 @@
     "SRCROW1":438,
     "SRCCOLUMN1":11,
     "SRCROW2":438,
-    "SRCCOLUMN2":49,
+    "SRCCOLUMN2":52,
     "REFCLSNAME":"",
     "REFINTNAME":"",
     "REFCMPNAME":"",
@@ -7680,8 +7680,8 @@
     "BCMTDCOM":"",
     "BCMTDSYN":0,
     "BCEVTCAT":0,
-    "TYPESRC_LENG":41,
-    "TYPESRC":"gt_receivers TYPE TABLE OF ty_receivers\r\n"
+    "TYPESRC_LENG":44,
+    "TYPESRC":"gt_receivers TYPE TABLE OF zreco_somlreci1\r\n"
    },
    {
     "CLSNAME":"ZCL_RECO_FORM",

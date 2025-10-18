@@ -153,12 +153,76 @@
 *START-OF-SELECTION.
         sos(  ).
 
-        LOOP AT gt_out_c INTO DATA(ls_out_c) .
-          MOVE-CORRESPONDING ls_out_c TO ls_output.
-          APPEND ls_output TO lt_output.
+
+        DATA: lv_uuid     TYPE sysuuid_c22,
+              ls_prev_key TYPE  zreco_cform.
+
+        SORT gt_out_c BY hesap_tur hesap_no kunnr lifnr.
+
+        LOOP AT gt_out_c ASSIGNING FIELD-SYMBOL(<fs_data>).
+
+          " Eğer key değiştiyse yeni UUID oluştur
+          IF <fs_data>-hesap_tur <> ls_prev_key-hesap_tur
+             OR <fs_data>-hesap_no  <> ls_prev_key-hesap_no
+             OR <fs_data>-kunnr     <> ls_prev_key-kunnr
+             OR <fs_data>-lifnr     <> ls_prev_key-lifnr.
+            TRY.
+                lv_uuid = cl_system_uuid=>create_uuid_c22_static( ).
+
+              CATCH cx_root INTO DATA(lx_err)..
+            ENDTRY..
+            ls_prev_key = <fs_data>. " key değerini sakla
+          ENDIF.
+
+          <fs_data>-uuid = lv_uuid.
         ENDLOOP.
 
+
+        DATA : ls_temp TYPE zreco_gtout,
+               lt_temp TYPE TABLE OF zreco_gtout.
+
+        LOOP AT gt_out_c INTO DATA(ls_out_c) .
+          MOVE-CORRESPONDING ls_out_c TO ls_output.
+          ls_output-gjahr = p_gjahr.
+          ls_output-period = p_period.
+          ls_output-bukrs = gs_adrs-bukrs.
+          APPEND ls_output TO lt_output.
+          MOVE-CORRESPONDING ls_out_c TO ls_temp.
+          ls_temp-gjahr = p_gjahr.
+          ls_temp-period = p_period.
+          ls_temp-bukrs = gs_adrs-bukrs.
+          APPEND ls_temp TO lt_temp.
+        ENDLOOP.
+
+*        DATA: lv_uuid     TYPE sysuuid_c22,
+*              ls_prev_key TYPE  zreco_cform.
 *
+*        SORT gt_out_c BY hesap_tur hesap_no kunnr lifnr.
+*
+*        LOOP AT gt_out_c INTO ls_out_c.
+*
+*          " Eğer key değiştiyse yeni UUID oluştur
+*          IF ls_out_c-hesap_tur <> ls_prev_key-hesap_tur
+*             OR ls_out_c-hesap_no  <> ls_prev_key-hesap_no
+*             OR ls_out_c-kunnr     <> ls_prev_key-kunnr
+*             OR ls_out_c-lifnr     <> ls_prev_key-lifnr.
+*
+*            lv_uuid = cl_system_uuid=>create_uuid_c22_static( ).
+*            ls_prev_key = ls_out_c. " key değerini sakla
+*          ENDIF.
+*
+*          " UUID'yi ata ve temp tabloya ekle
+*          MOVE-CORRESPONDING ls_out_c TO ls_temp.
+*          ls_temp-uuid = lv_uuid.
+*          APPEND ls_temp TO lt_temp.
+*
+*        ENDLOOP.
+
+        DELETE FROM zreco_gtout.
+        IF lt_temp IS NOT INITIAL.
+          MODIFY zreco_gtout FROM TABLE @lt_temp.
+        ENDIF.
+
         IF io_request->is_total_numb_of_rec_requested(  ).
           io_response->set_total_number_of_records( iv_total_number_of_records = lines( lt_output ) ).
         ENDIF.

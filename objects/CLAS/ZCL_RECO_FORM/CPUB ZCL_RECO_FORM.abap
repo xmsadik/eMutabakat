@@ -435,8 +435,8 @@ CLASS zcl_reco_form DEFINITION
              rec_type TYPE char03,
            END OF ty_receivers.
 
-    DATA : gt_receivers TYPE TABLE OF ty_receivers,
-           gs_receivers TYPE ty_receivers.
+    DATA : gt_receivers TYPE TABLE OF zreco_somlreci1,
+           gs_receivers TYPE zreco_somlreci1.
 
     DATA : gt_mail_list TYPE SORTED TABLE OF zreco_tmpe
                   WITH NON-UNIQUE KEY kunnr lifnr receiver,

@@ -43,7 +43,7 @@
            ls_adr6 TYPE  ty_adr6,
            ls_knvk TYPE  ty_knvk.
 
-    DATA : ls_receivers TYPE ty_receivers.
+    DATA : ls_receivers TYPE zreco_somlreci1.
 
 
     ls_mtype-sign = 'I'.
@@ -794,7 +794,7 @@
 
     ENDIF.
 
-    DATA lt_receivers TYPE STANDARD TABLE OF ty_receivers.
+    DATA lt_receivers TYPE STANDARD TABLE OF zreco_somlreci1.
 
 *    CALL FUNCTION '/ITETR/RECO_EXIT_013'
 *      EXPORTING
@@ -896,18 +896,18 @@
     "uncomment the following line for console output; prerequisite: code snippet is implementation of if_oo_adt_classrun~main
     "out->write( |response:  { lv_response }| ).
 
-    zinf_regulative_common=>parse_xml(
-          EXPORTING
-            iv_xml_string = lv_response
-          RECEIVING
-            rt_data       = DATA(lt_response_service)
-        ).
-
-    LOOP AT lt_response_service INTO DATA(ls_resp).
-      CASE ls_resp-name .
-        WHEN 'EmailAddress'.
-          e_mail = ls_resp-value.
-      ENDCASE.
-    ENDLOOP.
+*    zinf_regulative_common=>parse_xml(
+*          EXPORTING
+*            iv_xml_string = lv_response
+*          RECEIVING
+*            rt_data       = DATA(lt_response_service)
+*        ).
+*
+*    LOOP AT lt_response_service INTO DATA(ls_resp).
+*      CASE ls_resp-name .
+*        WHEN 'EmailAddress'.
+*          e_mail = ls_resp-value.
+*      ENDCASE.
+*    ENDLOOP.
 
   ENDMETHOD.

@@ -7,9 +7,9 @@
     "DDLXNAME":"ZRECO_DDL_E_SRVC",
     "VERSION":"A",
     "CHANGED_BY":"SAP_CUSTOMER",
-    "CHANGED_ON":"2025-01-29",
-    "CHANGED_AT":"11:13:11",
-    "UUID":"DD978388F9811EEFB7C640CFCA022353",
+    "CHANGED_ON":"2025-10-15",
+    "CHANGED_AT":"06:33:40",
+    "UUID":"FA163EBBCF7E1FE0AAB21C5B9DA8C65A",
     "ABAP_LANGUAGE_VERSION":"5"
    }
   ]
@@ -34,7 +34,7 @@
     "DDLXNAME":"ZRECO_DDL_E_SRVC",
     "VERSION":"A",
     "UUID":"",
-    "SOURCE":"@Metadata.layer : #CORE\r\n@UI:{\r\nheaderInfo:{\r\ntypeNamePlural:'SMTP Şifre Değiştirme',\r\ntypeName:'SMTP Şifre Değiştirme',\r\ntitle:{type:#STANDARD,label:'Form Tipleri',value:'Bukrs'}\r\n}\r\n}\r\nannotate entity ZRECO_DDL_P_SRVC with\r\n{\r\n  @UI.facet:[{id:'Informations',\r\n  purpose:#STANDARD,\r\n  type:#IDENTIFICATION_REFERENCE,\r\n  label:'SMTP Şifre Değiştirme',\r\n  position:10}]\r\n\r\n  @UI:{lineItem:[{position:10,importance:#HIGH}],\r\n  identification:[{position:10}],\r\n  selectionField:[{position:10}]}\r\n  Bukrs;\r\n  @UI:{lineItem:[{position:20,importance:#HIGH , label:'Service id'}],\r\n  identification:[{position:20 , label:'Service id'}],\r\n  selectionField:[{position:20}]}\r\n  @EndUserText.label : 'Service id'\r\n  Srvid;\r\n  @UI:{lineItem:[{position:30,importance:#HIGH , label:'Service URL'}],\r\n  identification:[{position:30 , label:'Service URL'}],\r\n  selectionField:[{position:30}]}\r\n  @EndUserText.label : 'Service URL'\r\n  Srvurl;\r\n  @UI:{lineItem:[{position:40,importance:#HIGH , label:'Service User'}],\r\n  identification:[{position:40 , label:'Service User'}],\r\n  selectionField:[{position:40}]}\r\n  @EndUserText.label : 'Service User'\r\n  Srvusr; \r\n  @UI.lineItem: [{ exclude: true }]\r\n  @EndUserText.label : 'Service Password'\r\n  @UI.masked: true\r\n  Srvpsw;\r\n  @UI:{lineItem:[{position:60,importance:#HIGH , label:'Service Host'}],\r\n  identification:[{position:60 , label:'Service Host'}],\r\n  selectionField:[{position:60}]}\r\n  @EndUserText.label : 'Service Host' \r\n  Srvhost;\r\n}"
+    "SOURCE":"@Metadata.layer : #CORE\r\n@UI:{\r\nheaderInfo:{\r\ntypeNamePlural:'SMTP Şifre Değiştirme',\r\ntypeName:'SMTP Şifre Değiştirme',\r\ntitle:{type:#STANDARD,label:'Form Tipleri',value:'Bukrs'}\r\n}\r\n}\r\nannotate entity ZRECO_DDL_P_SRVC with\r\n{\r\n  @UI.facet:[{id:'Informations',\r\n  purpose:#STANDARD,\r\n  type:#IDENTIFICATION_REFERENCE,\r\n  label:'SMTP Şifre Değiştirme',\r\n  position:10}]\r\n\r\n  @UI:{lineItem:[{position:10,importance:#HIGH}],\r\n  identification:[{position:10}],\r\n  selectionField:[{position:10}]}\r\n  Bukrs;\r\n  @UI:{lineItem:[{position:20,importance:#HIGH , label:'Service id'}],\r\n  identification:[{position:20 , label:'Service id'}],\r\n  selectionField:[{position:20}]}\r\n  @EndUserText.label : 'Service id'\r\n  Srvid;\r\n  @UI:{lineItem:[{position:30,importance:#HIGH , label:'Service URL'}],\r\n  identification:[{position:30 , label:'Service URL'}],\r\n  selectionField:[{position:30}]}\r\n  @EndUserText.label : 'Service URL'\r\n  Srvurl;\r\n  @UI:{lineItem:[{position:40,importance:#HIGH , label:'Service User'}],\r\n  identification:[{position:40 , label:'Service User'}],\r\n  selectionField:[{position:40}]}\r\n  @EndUserText.label : 'Service User'\r\n  Srvusr; \r\n  @UI:{lineItem:[{position:50,importance:#HIGH , label:'Service Password'}],\r\n  identification:[{position:50 , label:'Service Password'}],\r\n  selectionField:[{position:50}]}\r\n  @EndUserText.label : 'Service Password'\r\n  Srvpsw;\r\n  @UI:{lineItem:[{position:60,importance:#HIGH , label:'Service Host'}],\r\n  identification:[{position:60 , label:'Service Host'}],\r\n  selectionField:[{position:60}]}\r\n  @EndUserText.label : 'Service Host' \r\n  Srvhost;\r\n}"
    }
   ]
  },
@@ -248,16 +248,44 @@
    {
     "DDLXNAME":"ZRECO_DDL_E_SRVC",
     "ELEMENT":"SRVPSW",
-    "NAME":"UI.LINEITEM$1$.EXCLUDE",
+    "NAME":"UI.IDENTIFICATION$1$.LABEL",
     "ELEMENT_TYPE":"S",
-    "VALUE":"true"
+    "VALUE":"'Service Password'"
    },
    {
     "DDLXNAME":"ZRECO_DDL_E_SRVC",
     "ELEMENT":"SRVPSW",
-    "NAME":"UI.MASKED",
+    "NAME":"UI.IDENTIFICATION$1$.POSITION",
     "ELEMENT_TYPE":"S",
-    "VALUE":"true"
+    "VALUE":"50"
+   },
+   {
+    "DDLXNAME":"ZRECO_DDL_E_SRVC",
+    "ELEMENT":"SRVPSW",
+    "NAME":"UI.LINEITEM$1$.IMPORTANCE",
+    "ELEMENT_TYPE":"S",
+    "VALUE":"#HIGH"
+   },
+   {
+    "DDLXNAME":"ZRECO_DDL_E_SRVC",
+    "ELEMENT":"SRVPSW",
+    "NAME":"UI.LINEITEM$1$.LABEL",
+    "ELEMENT_TYPE":"S",
+    "VALUE":"'Service Password'"
+   },
+   {
+    "DDLXNAME":"ZRECO_DDL_E_SRVC",
+    "ELEMENT":"SRVPSW",
+    "NAME":"UI.LINEITEM$1$.POSITION",
+    "ELEMENT_TYPE":"S",
+    "VALUE":"50"
+   },
+   {
+    "DDLXNAME":"ZRECO_DDL_E_SRVC",
+    "ELEMENT":"SRVPSW",
+    "NAME":"UI.SELECTIONFIELD$1$.POSITION",
+    "ELEMENT_TYPE":"S",
+    "VALUE":"50"
    },
    {
     "DDLXNAME":"ZRECO_DDL_E_SRVC",
@@ -443,6 +471,20 @@
    {
     "DDLXNAME":"ZRECO_DDL_E_SRVC",
     "DDLANGUAGE":"T",
+    "ELEMENT":"SRVPSW",
+    "NAME":"UI.IDENTIFICATION$1$.LABEL",
+    "TEXT":"Service Password"
+   },
+   {
+    "DDLXNAME":"ZRECO_DDL_E_SRVC",
+    "DDLANGUAGE":"T",
+    "ELEMENT":"SRVPSW",
+    "NAME":"UI.LINEITEM$1$.LABEL",
+    "TEXT":"Service Password"
+   },
+   {
+    "DDLXNAME":"ZRECO_DDL_E_SRVC",
+    "DDLANGUAGE":"T",
     "ELEMENT":"SRVURL",
     "NAME":"ENDUSERTEXT.LABEL",
     "TEXT":"Service URL"
@@ -493,8 +535,8 @@
     "EXTENDED_ARTIFACT":"ZRECO_DDL_P_SRVC",
     "VARIANT":"",
     "LAYER":1500,
-    "DT_UUID":"DD978388F9811EEFB7C640CFCA022353",
-    "RT_HASH":"D70AA4C72FAD0720CFA696ED5D2D2D85A439F336",
+    "DT_UUID":"FA163EBBCF7E1FE0AAB21C5B9DA8C65A",
+    "RT_HASH":"731D11724572C6BBEB55856935DC8ED7E6085251",
     "GEN_VERSION":"0",
     "TYPE":"0"
    }

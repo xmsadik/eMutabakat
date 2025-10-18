@@ -5,6 +5,43 @@ CLASS zreco_common DEFINITION
 
   PUBLIC SECTION.
 
+    DATA: gv_otf TYPE abap_boolean.
+
+    DATA: gt_email TYPE TABLE OF zreco_mail,
+          gs_email TYPE zreco_mail.
+
+    DATA: gt_receivers TYPE TABLE OF zreco_somlreci1, "zreco_somlreci1,
+          gs_receivers TYPE zreco_somlreci1.
+
+    DATA :gt_mail_list TYPE SORTED TABLE OF Zreco_tmpe
+    WITH NON-UNIQUE KEY kunnr lifnr receiver,
+          gs_mail_list LIKE LINE OF gt_mail_list.
+
+    TYPES: BEGIN OF ty_cform,
+             hesap_tur TYPE zreco_account_type,
+             hesap_no  TYPE zreco_ktonr_av,
+             waers     TYPE waers,
+             kunnr     TYPE kunnr,
+             lifnr     TYPE lifnr,
+           END OF ty_cform.
+
+    DATA: gt_dunning TYPE TABLE OF Zreco_dunning,
+          gs_dunning TYPE Zreco_dunning,
+          gs_htxt    TYPE Zreco_htxt, "Mutabakat form metinleri
+          gt_htxt    TYPE TABLE OF Zreco_htxt, "Başlık metinleri
+          gt_opening TYPE TABLE OF Zreco_opening,
+          gs_opening TYPE Zreco_opening,
+          gs_dtxt    TYPE Zreco_dtxt, "Ihtar form metinleri
+          gt_dtxt    TYPE TABLE OF Zreco_dtxt,
+          gs_otxt    TYPE Zreco_otxt.  "Ihtar form metinleri
+
+
+    DATA : gs_adrs TYPE zreco_adrs.
+
+    DATA:     gv_no_local  TYPE abap_boolean.
+
+    DATA : mt_cform TYPE TABLE OF zreco_gtout,
+           ms_cform TYPE zreco_gtout.
 
     DATA: lt_reco_cform_sf TYPE TABLE OF zreco_cform_sf,
           ls_reco_cform_sf TYPE zreco_cform_sf.
@@ -20,6 +57,27 @@ CLASS zreco_common DEFINITION
     DATA: mt_h001   TYPE TABLE OF zreco_hdr,
           mt_return TYPE TABLE OF zreco_reminder.
 
+    DATA : mt_sform TYPE TABLE OF zreco_cform_sform.
+
+    DATA : gt_out_c TYPE TABLE OF zreco_gtout.
+
+    DATA : gt_cform TYPE TABLE OF ty_cform, "zreco_gtout,
+           gs_cform TYPE ty_cform. "zreco_gtout.
+
+    DATA : gv_subrc TYPE sy-subrc .
+
+    DATA : gs_cform_sf  TYPE zreco_cform_sform,
+           gt_cform_sf  TYPE TABLE OF  zreco_cform_sform,
+           gs_exch      TYPE zreco_EXCH,
+           gs_account   TYPE zreco_account,
+           gv_loc_dmbtr TYPE zreco_wrbtr,
+           gv_spl_dmbtr TYPE zreco_wrbtr, "Toplam ÖDK tutarı
+           gt_exch      TYPE TABLE OF zreco_exch,
+           gv_kur       TYPE abap_boolean,
+           gs_adrc      TYPE Zreco_adrc.
+
+    DATA: lv_c1 TYPE c LENGTH 1.
+
     TYPES:
       ty_kunnr TYPE  TABLE OF zreco_range_kunnr,
       ty_blart TYPE  TABLE OF zreco_range_blart,
@@ -27,12 +85,12 @@ CLASS zreco_common DEFINITION
       ty_belnr TYPE  TABLE OF zreco_range_belnr,
       ty_lifnr TYPE  TABLE OF zreco_range_lifnr.
 
-    TYPES: BEGIN OF ty_receivers,
-             receiver TYPE zreco_AD_SMTPADR,
-             rec_type TYPE char03,
-           END OF ty_receivers.
-
-    DATA : lt_recevier TYPE TABLE OF ty_receivers.
+*    TYPES: BEGIN OF ty_receivers,
+*             receiver TYPE zreco_AD_SMTPADR,
+*             rec_type TYPE char03,
+*           END OF ty_receivers.
+*
+*    DATA : lt_recevier TYPE TABLE OF ty_receivers.
 
     METHODS:
       zreco_result_new IMPORTING VALUE(i_randid)   TYPE  zreco_random OPTIONAL
@@ -155,5 +213,37 @@ CLASS zreco_common DEFINITION
                                    VALUE(i_no_general) TYPE abap_boolean OPTIONAL
                                    VALUE(i_mtype)      TYPE zRECO_TYPE OPTIONAL
                          EXPORTING VALUE(e_mail)       TYPE zreco_ad_smtpadr
-                                   VALUE(t_receivers)  LIKE lt_recevier.
+                                   VALUE(t_receivers)  LIKE gt_receivers,
+      send_grid_data_c IMPORTING VALUE(it_out_c) LIKE    mt_sform
+                                 i_head_c        TYPE zreco_hdr
+                                 it_receivers    LIKE gt_receivers
+*                                 it_srv_attachment    TYPE /itetr/reco_tt_attachments
+                                 i_param         LIKE lv_c1,
+*                       CHANGING  lv_all          like lv_c1
+*                                 e_message_v2    TYPE symsgv,
+
+      multi_sending IMPORTING it_cform  LIKE mt_cform
+                              iv_output TYPE zreco_output,
+
+      print_form IMPORTING iv_output TYPE zreco_output,
+      single_sending IMPORTING it_cform  LIKE mt_cform.
+
+*    METHODS:
+*      send_pdf_mail
+*        IMPORTING
+*          it_pdf            TYPE xstring
+*          i_subject         TYPE string
+*          i_sender_name     TYPE string
+*          i_sender_address  TYPE string
+*          i_obj_descr       TYPE string
+*          i_attach_name     TYPE string
+*          i_param           TYPE string
+*          it_receivers      TYPE STANDARD TABLE of string
+*          it_srv_attachment TYPE STANDARD TABLE OF string OPTIONAL
+*        CHANGING
+*          ct_out_c          TYPE STANDARD TABLE OF zcform_sf OPTIONAL "eski TABLES it_out_c
+*          ct_body           TYPE STANDARD TABLE OF string OPTIONAL    "eski TABLES ti_body
+*        EXPORTING
+*          es_return         TYPE ty_return
+*          e_pdfbase64       TYPE string.
 
